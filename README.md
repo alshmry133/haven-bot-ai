@@ -1,2 +1,153 @@
-# haven-bot-ai
-ai
+# 🤖 بوت ديسكورد الذكي مع Google Gemini AI
+
+بوت ديسكورد ذكي يستخدم Google Gemini AI للإجابة على الأسئلة وتقديم المساعدة بذكاء اصطناعي متقدم.
+
+## ✨ المميزات
+
+- 🧠 **ذكاء اصطناعي متقدم**: يستخدم Google Gemini 2.5 Flash للردود الذكية
+- 💬 **فهم السياق**: يتذكر المحادثات السابقة لفهم أفضل
+- 🌐 **دعم متعدد اللغات**: يدعم العربية والإنجليزية
+- 🔍 **بحث ذكي**: قادر على الوصول للمعلومات المعقدة
+- ⚡ **سريع الاستجابة**: ردود فورية وفعالة
+- 📊 **سهل النشر**: جاهز للنشر على Render
+
+## 📋 المتطلبات
+
+- Node.js 18 أو أحدث
+- حساب Discord Developer مع بوت
+- مفتاح Google Gemini API
+
+## 🚀 التثبيت والإعداد
+
+### 1. الحصول على Discord Bot Token
+
+1. اذهب إلى [Discord Developer Portal](https://discord.com/developers/applications)
+2. أنشئ تطبيق جديد (New Application)
+3. اذهب إلى قسم "Bot" وأنشئ بوت
+4. انسخ الـ Token
+5. **مهم**: فعّل "MESSAGE CONTENT INTENT" في Bot Settings
+
+### 2. الحصول على Gemini API Key
+
+1. اذهب إلى [Google AI Studio](https://aistudio.google.com/apikey)
+2. سجل الدخول بحساب Google
+3. أنشئ API Key جديد
+4. انسخ المفتاح
+
+### 3. إعداد المشروع
+
+```bash
+# تثبيت المكتبات
+npm install
+
+# إنشاء ملف .env
+cp .env.example .env
+
+# أضف المفاتيح في ملف .env
+DISCORD_TOKEN=your_discord_bot_token_here
+GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+### 4. تشغيل البوت
+
+```bash
+npm start
+```
+
+## 🎮 طريقة الاستخدام
+
+### الأوامر الأساسية
+
+- `!help` أو `!مساعدة` - عرض قائمة الأوامر
+- `!clear` أو `!مسح` - مسح سجل المحادثة
+- `!ping` - فحص سرعة الاستجابة
+
+### التفاعل مع البوت
+
+1. **اذكر البوت**: `@اسم_البوت ما هي عاصمة فرنسا؟`
+2. **رد على رسالة البوت**: رد مباشرة على أي رسالة من البوت
+
+## 🌐 النشر على Render
+
+### الخطوات
+
+1. قم بإنشاء حساب على [Render](https://render.com)
+2. اربط حساب GitHub الخاص بك
+3. أنشئ Web Service جديد
+4. اختر هذا المستودع
+5. استخدم الإعدادات التالية:
+   - **Build Command**: `npm install`
+   - **Start Command**: `npm start`
+   - **Environment**: Node
+6. أضف متغيرات البيئة:
+   - `DISCORD_TOKEN`
+   - `GEMINI_API_KEY`
+
+### ملف render.yaml (اختياري)
+
+```yaml
+services:
+  - type: web
+    name: discord-gemini-bot
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: DISCORD_TOKEN
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+```
+
+## 📁 هيكل الملفات
+
+```
+.
+├── index.js          # نقطة البداية الرئيسية
+├── client.js         # إعداد بوت ديسكورد ومعالجة الرسائل
+├── tokens.js         # إدارة المفاتيح السرية
+├── package.json      # المكتبات والإعدادات
+├── .env.example      # مثال لملف المتغيرات البيئية
+└── README.md         # التوثيق
+```
+
+## 🔧 المكتبات المستخدمة
+
+- **discord.js** - التفاعل مع Discord API
+- **@google/genai** - Google Gemini AI SDK
+- **express** - خادم HTTP لـ health checks
+- **dotenv** - إدارة المتغيرات البيئية
+
+## 🛡️ الأمان
+
+- المفاتيح السرية محمية في متغيرات البيئة
+- لا يتم حفظ المفاتيح في الكود
+- سجلات المحادثات مؤقتة ومحدودة
+
+## 📝 ملاحظات
+
+- البوت يحتفظ بسجل المحادثات لكل مستخدم (آخر 10 تبادلات)
+- الردود الطويلة يتم تقسيمها تلقائياً
+- يدعم الرسائل في السيرفرات والرسائل الخاصة
+
+## 🤝 المساهمة
+
+مرحباً بالمساهمات! يمكنك:
+- الإبلاغ عن الأخطاء
+- اقتراح مميزات جديدة
+- تحسين الكود
+
+## 📄 الترخيص
+
+ISC License
+
+## 💡 الدعم
+
+إذا واجهت أي مشاكل:
+1. تحقق من صحة المفاتيح السرية
+2. تأكد من تفعيل MESSAGE CONTENT INTENT
+3. راجع سجلات الأخطاء
+
+---
+
+صنع بـ ❤️ باستخدام Discord.js و Google Gemini AI
